@@ -1,0 +1,72 @@
+name: DCO
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+
+permissions:
+  contents: read
+
+jobs:
+  dco:
+    name: Check sign-off
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          # Full history so the merge base is reachable.
+          fetch-depth: 0
+
+      - name: Verify every commit carries a matching Signed-off-by
+        env:
+          BASE_SHA: ${{ github.event.pull_request.base.sha }}
+        run: |
+          set -euo pipefail
+
+          failed=0
+          commits="$(git rev-list --no-merges "${BASE_SHA}..HEAD")"
+
+          if [ -z "$commits" ]; then
+            echo "No non-merge commits to check."
+            exit 0
+          fi
+
+          for sha in $commits; do
+            subject="$(git show -s --format='%h %s' "$sha")"
+            author="$(git show -s --format='%an <%ae>' "$sha")"
+
+            if git show -s --format='%B' "$sha" \
+              | grep -qiF "Signed-off-by: ${author}"; then
+              echo "PASS  ${subject}"
+            else
+              echo "FAIL  ${subject}"
+              echo "      missing: Signed-off-by: ${author}"
+              failed=1
+            fi
+          done
+
+          if [ "$failed" -ne 0 ]; then
+            cat <<'EOF'
+
+          ------------------------------------------------------------------
+          One or more commits are missing a Developer Certificate of Origin
+          sign-off.
+
+          Sign new commits automatically with:
+
+              git commit -s -m "your message"
+
+          To fix the commits already on this branch:
+
+              git rebase --signoff origin/master
+              git push --force-with-lease
+
+          See CONTRIBUTING.md for what the sign-off certifies.
+          ------------------------------------------------------------------
+          EOF
+            exit 1
+          fi
+
+          echo "All commits signed off."

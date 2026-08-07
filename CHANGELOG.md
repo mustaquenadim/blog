@@ -18,14 +18,15 @@ generation functionality yet.
 
 ### Added
 
-- Open-source project foundation: AGPL-3.0 `LICENSE`, `NOTICE` with third-party
-  attribution for the vendored shadcn/ui and Base UI code, and a Contributor
-  License Agreement (`CLA.md`).
+- Open-source project foundation: MIT `LICENSE` and a `NOTICE` carrying the
+  third-party attribution for the vendored shadcn/ui and Base UI code.
+- Developer Certificate of Origin sign-off, enforced by a CI check on pull
+  requests.
 - Project documentation: rewritten `README.md`, `CONTRIBUTING.md`,
   `CODE_OF_CONDUCT.md`, and `SECURITY.md`.
 - GitHub automation: CI workflow (lint, typecheck, format check, test, build),
-  CLA assistant workflow, release-please workflow, Dependabot configuration,
-  and issue/pull request templates.
+  DCO sign-off check, release-please workflow, Dependabot configuration, and
+  issue/pull request templates.
 - Test infrastructure: Vitest with Testing Library and `jsdom`, plus smoke
   tests for `cn()` and the `Button` component.
 - Repository hygiene: `.gitattributes` (LF normalization), `.editorconfig`,
@@ -81,7 +82,8 @@ Covers two commits: `99eeba7` (initial commit, 24 files) and `2860b27`
 
 Carried into 0.1.0 and resolved there:
 
-- No `LICENSE`, so the published code was legally all rights reserved.
+- No `LICENSE`, so the published code was legally all rights reserved. Resolved
+  in 0.1.0 with the MIT License.
 - `pnpm lint` exited non-zero on two `react-hooks/set-state-in-effect` errors.
 - `prettier --check` failed on 73 files.
 - No test runner and no tests.

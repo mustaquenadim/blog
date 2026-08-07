@@ -32,10 +32,10 @@ which. If you tested manually, list the steps you followed.
 - [ ] My commits follow [Conventional Commits](https://www.conventionalcommits.org)
 - [ ] I added or updated tests covering my change (or explained why none apply)
 - [ ] I updated documentation where behaviour changed
-- [ ] Any new original source file carries the AGPL header
+- [ ] Any new original source file carries the MIT SPDX header
       (see [CONTRIBUTING.md](../CONTRIBUTING.md)); generated shadcn/ui files do not
-- [ ] I have read and agree to the [CLA](../CLA.md)
-      <!-- The CLA bot will prompt you automatically on your first PR. -->
+- [ ] All my commits are signed off (`git commit -s`)
+      <!-- A CI check verifies this. See CONTRIBUTING.md for what it certifies. -->
 
 ## Screenshots
 

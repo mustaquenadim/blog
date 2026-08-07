@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "description": "Open-core platform for generating blogs. Built with Next.js, React, and Tailwind CSS.",
-  "license": "AGPL-3.0-only",
+  "license": "MIT",
   "author": "Mustaque Nadim",
   "homepage": "https://github.com/mustaquenadim/blog#readme",
   "repository": {

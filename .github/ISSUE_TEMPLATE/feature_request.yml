@@ -66,5 +66,6 @@ body:
       options:
         - label: I am willing to open a pull request for this.
         - label: >
-            I understand that contributions require signing the
-            [CLA](https://github.com/mustaquenadim/blog/blob/master/CLA.md).
+            I understand that commits must be signed off
+            (`git commit -s`), per
+            [CONTRIBUTING.md](https://github.com/mustaquenadim/blog/blob/master/CONTRIBUTING.md).

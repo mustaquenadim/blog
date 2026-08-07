@@ -8,26 +8,38 @@ need to get a change merged.
 > before investing time in a large change, please open an issue or a discussion
 > to agree on the approach. Small fixes can go straight to a pull request.
 
-## Contributor License Agreement
+## Developer Certificate of Origin
 
-**All contributors must sign the [CLA](CLA.md) before their first pull request
-can be merged.**
+**Every commit must be signed off.** Add `-s` when you commit:
 
-You do not need to do anything in advance. When you open your first pull
-request, a bot will comment asking you to confirm. Reply with exactly:
-
-```
-I have read the CLA Document and I hereby sign the CLA
+```bash
+git commit -s -m "feat: add markdown editor"
 ```
 
-That is it — your signature is recorded against your GitHub username and you
-will not be asked again.
+That appends one line to the message:
 
-**Why this project asks for one:** Blog is released under the AGPL-3.0 and is
-also the basis of a commercial hosted service. The CLA grants the maintainer the
-rights needed to offer the project under additional terms. Without it,
-contributed code could only ever be distributed under the AGPL-3.0. You keep
-full ownership of your contribution and can use it however you like elsewhere.
+```text
+Signed-off-by: Your Name <your.email@example.com>
+```
+
+The name and email must match your git author identity. A CI check verifies
+this on every pull request; if you forget, fix the whole branch with:
+
+```bash
+git rebase --signoff origin/master
+git push --force-with-lease
+```
+
+**What you are certifying.** The sign-off is your statement that you wrote the
+patch or otherwise have the right to submit it under the project's license.
+It is the full text of the [Developer Certificate of Origin
+1.1](https://developercertificate.org/) — worth the two minutes it takes to
+read.
+
+**You keep your copyright.** There is no license assignment and no agreement to
+sign. Your contribution is simply licensed under the same
+[MIT License](LICENSE) as the rest of the project, and you remain free to use
+your own work however you like elsewhere.
 
 ## Code of Conduct
 
@@ -78,7 +90,7 @@ The prefix determines how the change is categorized in the changelog.
 ```
 feat: add markdown editor to the post composer
 fix: prevent theme flash on first paint
-docs: document the AGPL network clause
+docs: document the local setup prerequisites
 chore: bump next to 16.2.7
 style: apply prettier across codebase
 refactor: extract slug generation into lib
@@ -140,14 +152,15 @@ New **original** source files should start with:
 
 ```ts
 /**
- * Copyright (C) 2026 Mustaque Nadim
- * SPDX-License-Identifier: AGPL-3.0-only
+ * Copyright (c) 2026 Mustaque Nadim
+ * SPDX-License-Identifier: MIT
  */
 ```
 
 Do **not** add this header to CLI-generated shadcn/ui files (`components/ui/**`,
-`lib/utils.ts`, `hooks/use-mobile.ts`) — that code is MIT-licensed and derived
-from upstream. See [NOTICE](NOTICE).
+`lib/utils.ts`, `hooks/use-mobile.ts`). That code is upstream's copyright, not
+this project's — stamping our notice on it would misstate its provenance, even
+though it carries the same MIT terms. See [NOTICE](NOTICE).
 
 ## Tests
 
@@ -177,6 +190,5 @@ reproduction steps.
 
 ## License
 
-By contributing, you agree that your contributions will be licensed under the
-AGPL-3.0, and that the maintainer may additionally license them under other
-terms as set out in the [CLA](CLA.md).
+By contributing, you agree that your contributions are licensed under the
+[MIT License](LICENSE) — the same terms as the rest of the project.
