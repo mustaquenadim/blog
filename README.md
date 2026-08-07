@@ -1,21 +1,116 @@
-# Next.js template
+# Blog
 
-This is a Next.js template with shadcn/ui.
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](LICENSE)
+[![CI](https://github.com/mustaquenadim/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/mustaquenadim/blog/actions/workflows/ci.yml)
 
-## Adding components
+Open-core platform for generating blogs.
 
-To add components to your app, run the following command:
+> [!WARNING]
+> **Early scaffold — not yet functional.** This repository currently contains the
+> project foundation only: a Next.js App Router setup, the shadcn/ui component
+> library, theming, and tooling. There is no blog generation, no content model,
+> no database, and no API yet. It is public this early so the licensing and
+> contribution model are settled before the product is built. Expect breaking
+> changes and do not deploy this expecting a working product.
+
+## Tech stack
+
+| Layer           | Choice                                                     |
+| --------------- | ---------------------------------------------------------- |
+| Framework       | [Next.js 16](https://nextjs.org) (App Router, RSC)         |
+| Language        | TypeScript (strict), ESM                                   |
+| UI              | React 19, [shadcn/ui](https://ui.shadcn.com) (`base-nova`) |
+| Primitives      | [Base UI](https://base-ui.com)                             |
+| Styling         | Tailwind CSS v4 (CSS-first, no `tailwind.config`)          |
+| Theming         | `next-themes` (press <kbd>d</kbd> to toggle dark mode)     |
+| Testing         | [Vitest](https://vitest.dev) + Testing Library             |
+| Package manager | pnpm                                                       |
+
+## Getting started
+
+**Prerequisites:** Node.js >= 22 (see [`.nvmrc`](.nvmrc)) and pnpm 10.
 
 ```bash
-npx shadcn@latest add button
+git clone https://github.com/mustaquenadim/blog.git
+cd blog
+pnpm install
+pnpm dev
 ```
 
-This will place the ui components in the `components` directory.
+Open <http://localhost:3000>.
 
-## Using components
+No environment variables are required yet. When that changes, copy
+[`.env.example`](.env.example) to `.env.local` and fill it in.
 
-To use the components in your app, import them as follows:
+## Scripts
 
-```tsx
-import { Button } from "@/components/ui/button";
+| Command              | What it does                                   |
+| -------------------- | ---------------------------------------------- |
+| `pnpm dev`           | Start the dev server                           |
+| `pnpm build`         | Production build                               |
+| `pnpm start`         | Serve the production build                     |
+| `pnpm lint`          | ESLint, failing on any warning                 |
+| `pnpm typecheck`     | `tsc --noEmit`                                 |
+| `pnpm format`        | Rewrite files with Prettier                    |
+| `pnpm format:check`  | Verify formatting without writing (used by CI) |
+| `pnpm test`          | Run the test suite once                        |
+| `pnpm test:watch`    | Run tests in watch mode                        |
+| `pnpm test:coverage` | Run tests with a coverage report               |
+
+CI runs `lint`, `typecheck`, `format:check`, `test`, and `build` on every pull
+request. Running them locally before pushing is the fastest way to a green PR.
+
+## Project structure
+
+```text
+app/                 Next.js App Router — layout, pages, global styles
+components/
+  theme-provider.tsx Theme context and the dark-mode hotkey
+  ui/                shadcn/ui primitives (generated — see NOTICE)
+hooks/               Shared React hooks
+lib/                 Utilities
+public/              Static assets
 ```
+
+## Contributing
+
+Contributions are welcome. Please read [CONTRIBUTING.md](CONTRIBUTING.md) first —
+it covers local setup, coding conventions, and the pull request process.
+
+This project requires all contributors to sign a
+[Contributor License Agreement](CLA.md). A bot will prompt you automatically on
+your first pull request; it takes one comment and you are only asked once. The
+CLA exists so the project can be offered both under the AGPL-3.0 and under a
+commercial license.
+
+By participating you agree to the [Code of Conduct](CODE_OF_CONDUCT.md).
+
+## Security
+
+Please do **not** open a public issue for security vulnerabilities. See
+[SECURITY.md](SECURITY.md) for how to report them privately.
+
+## License
+
+Copyright (C) 2026 Mustaque Nadim
+
+Licensed under the **GNU Affero General Public License v3.0 only**. The full text
+is in [LICENSE](LICENSE).
+
+> [!IMPORTANT]
+> **If you run a modified version of this software as a network service, AGPL
+> section 13 requires you to offer its complete source code to your users.** This
+> is the practical difference between the AGPL and the GPL, and it applies to
+> anyone hosting this — including forks. A "Source" link in your application's
+> UI pointing at your modified source is the usual way to satisfy it.
+
+Commercial licensing, if you need terms other than the AGPL, is available —
+open an issue to start that conversation.
+
+### Third-party code
+
+The files under `components/ui/`, plus `lib/utils.ts` and `hooks/use-mobile.ts`,
+were generated by the shadcn CLI and derive from
+[shadcn/ui](https://github.com/shadcn-ui/ui) and
+[Base UI](https://github.com/mui/base-ui), both MIT licensed. Full attribution is
+in [NOTICE](NOTICE).
