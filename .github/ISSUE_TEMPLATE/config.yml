@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+
+contact_links:
+  - name: Questions and ideas
+    url: https://github.com/mustaquenadim/blog/discussions
+    about: >
+      Ask a question, share an idea, or discuss an approach before opening an
+      issue.
+
+  - name: Report a security vulnerability
+    url: https://github.com/mustaquenadim/blog/security/advisories/new
+    about: >
+      Report vulnerabilities privately. Please do not open a public issue for
+      security problems.
