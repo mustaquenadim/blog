@@ -1,0 +1,78 @@
+version: 2
+
+updates:
+  # ---------------------------------------------------------------------------
+  # npm / pnpm dependencies
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+    open-pull-requests-limit: 10
+    versioning-strategy: increase-if-necessary
+    commit-message:
+      prefix: chore
+      include: scope
+    labels:
+      - dependencies
+    # Group routine updates so they arrive as a couple of PRs instead of dozens.
+    # Major bumps stay ungrouped so each gets reviewed on its own.
+    groups:
+      react:
+        patterns:
+          - react
+          - react-dom
+          - "@types/react"
+          - "@types/react-dom"
+        update-types:
+          - minor
+          - patch
+      next:
+        patterns:
+          - next
+          - eslint-config-next
+        update-types:
+          - minor
+          - patch
+      tooling:
+        patterns:
+          - eslint*
+          - prettier*
+          - typescript
+          - vitest
+          - "@vitest/*"
+          - "@vitejs/*"
+          - "@testing-library/*"
+          - jsdom
+        update-types:
+          - minor
+          - patch
+      production-dependencies:
+        dependency-type: production
+        update-types:
+          - minor
+          - patch
+
+  # ---------------------------------------------------------------------------
+  # GitHub Actions used by the workflows above
+  # ---------------------------------------------------------------------------
+  - package-ecosystem: github-actions
+    directory: "/"
+    schedule:
+      interval: weekly
+      day: monday
+      time: "06:00"
+    commit-message:
+      prefix: ci
+    labels:
+      - dependencies
+      - github-actions
+    groups:
+      actions:
+        patterns:
+          - "*"
+        update-types:
+          - minor
+          - patch

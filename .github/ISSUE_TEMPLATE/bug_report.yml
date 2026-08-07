@@ -1,0 +1,102 @@
+name: Bug report
+description: Report something that is broken or behaving unexpectedly.
+title: "bug: "
+labels: [bug, needs-triage]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a bug.
+
+        **Do not use this form for security vulnerabilities.** Report those
+        privately — see [SECURITY.md](https://github.com/mustaquenadim/blog/blob/master/SECURITY.md).
+
+  - type: checkboxes
+    id: preflight
+    attributes:
+      label: Preflight checks
+      options:
+        - label: I searched existing issues and this has not been reported.
+          required: true
+        - label: I am running the latest commit on `master`.
+          required: true
+        - label: This is not a security vulnerability.
+          required: true
+
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: A clear description of the bug, and what you expected instead.
+      placeholder: |
+        When I ..., the app ....
+        I expected it to ....
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: >
+        Precise, numbered steps. This is the single most useful part of the
+        report — a bug that cannot be reproduced usually cannot be fixed.
+      placeholder: |
+        1. Run `pnpm dev`
+        2. Go to '...'
+        3. Click on '...'
+        4. See the error
+    validations:
+      required: true
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs or screenshots
+      description: >
+        Paste terminal output or browser console errors. This is rendered as a
+        code block, so no backticks needed.
+      render: shell
+
+  - type: input
+    id: version
+    attributes:
+      label: Commit or version
+      description: Output of `git rev-parse --short HEAD`.
+      placeholder: 2860b27
+    validations:
+      required: true
+
+  - type: dropdown
+    id: os
+    attributes:
+      label: Operating system
+      options:
+        - macOS
+        - Linux
+        - Windows
+        - Other
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node and pnpm versions
+      description: Output of `node -v && pnpm -v`.
+      placeholder: v22.14.0 / 10.33.4
+    validations:
+      required: true
+
+  - type: dropdown
+    id: browser
+    attributes:
+      label: Browser
+      description: Only if the bug is in the UI.
+      options:
+        - Not applicable
+        - Chrome
+        - Firefox
+        - Safari
+        - Edge
+        - Other

@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2026 Mustaque Nadim
+ * SPDX-License-Identifier: MIT
+ */
+
 import { Button } from "@/components/ui/button"
 
 export default function Page() {

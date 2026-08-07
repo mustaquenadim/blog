@@ -30,7 +30,31 @@ pnpm-debug.log*
 
 # env files (can opt-in for committing if needed)
 .env*
+!.env.example
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# deployment / build caches
+.vercel/
+.turbo/
+
+# credentials and keys — never commit these
+*.key
+*.p12
+*.pfx
+*.keystore
+*.jks
+id_rsa*
+id_ed25519*
+credentials.json
+service-account*.json
+
+# editors
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# logs
+*.log

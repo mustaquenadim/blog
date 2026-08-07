@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2026 Mustaque Nadim
+ * SPDX-License-Identifier: MIT
+ */
+
 import { Geist, Geist_Mono } from "next/font/google"
 
 import "./globals.css"

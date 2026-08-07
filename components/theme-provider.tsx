@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2026 Mustaque Nadim
+ * SPDX-License-Identifier: MIT
+ */
+
 "use client"
 
 import * as React from "react"
