@@ -1,15 +1,43 @@
 {
-  "name": "Blog",
+  "name": "blog",
   "version": "0.0.1",
-  "type": "module",
   "private": true,
+  "description": "Open-core platform for generating blogs. Built with Next.js, React, and Tailwind CSS.",
+  "license": "AGPL-3.0-only",
+  "author": "Mustaque Nadim",
+  "homepage": "https://github.com/mustaquenadim/blog#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mustaquenadim/blog.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mustaquenadim/blog/issues"
+  },
+  "keywords": [
+    "blog",
+    "blog-generator",
+    "nextjs",
+    "react",
+    "tailwindcss",
+    "shadcn-ui",
+    "typescript"
+  ],
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@10.33.4",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "format": "prettier --write \"**/*.{ts,tsx}\"",
-    "typecheck": "tsc --noEmit"
+    "lint": "eslint --max-warnings 0",
+    "typecheck": "tsc --noEmit",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@base-ui/react": "^1.7.0",
@@ -34,14 +62,22 @@
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^7.0.0",
+    "@testing-library/react": "^16.3.2",
+    "@testing-library/user-event": "^14.6.3",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@vitejs/plugin-react": "^6.0.5",
+    "@vitest/coverage-v8": "^4.1.10",
     "eslint": "^9",
     "eslint-config-next": "16.2.6",
+    "jsdom": "^30.0.1",
     "prettier": "^3.8.3",
     "prettier-plugin-tailwindcss": "^0.8.0",
     "tailwindcss": "^4",
-    "typescript": "^5"
+    "typescript": "^5",
+    "vitest": "^4.1.10"
   }
 }
