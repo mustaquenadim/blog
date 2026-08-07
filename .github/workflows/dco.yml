@@ -37,6 +37,20 @@ jobs:
             subject="$(git show -s --format='%h %s' "$sha")"
             author="$(git show -s --format='%an <%ae>' "$sha")"
 
+            # Bots are exempt. They do sign off, but with a service address
+            # that differs from their author address, so the strict identity
+            # match below can never succeed for them. Dependabot, for example,
+            # authors as <49699333+dependabot[bot]@users.noreply.github.com>
+            # but signs off as <support@github.com>. The DCO is a statement by
+            # a human about code they wrote; it has no meaning for an automated
+            # dependency bump.
+            case "$author" in
+              *"[bot]"*)
+                echo "SKIP  ${subject}  (bot)"
+                continue
+                ;;
+            esac
+
             if git show -s --format='%B' "$sha" \
               | grep -qiF "Signed-off-by: ${author}"; then
               echo "PASS  ${subject}"
