@@ -1,0 +1,33 @@
+name: Release
+
+on:
+  push:
+    branches: [master]
+
+# Needed to open and update the release pull request, and to create the
+# GitHub Release and git tag when it is merged.
+permissions:
+  contents: write
+  pull-requests: write
+
+# Never run two release runs at once — they would fight over the same PR.
+concurrency:
+  group: ${{ github.workflow }}
+  cancel-in-progress: false
+
+jobs:
+  release-please:
+    name: Maintain release pull request
+    runs-on: ubuntu-latest
+
+    steps:
+      # Reads Conventional Commits since the last release and keeps a
+      # "chore(master): release x.y.z" PR up to date. Merging that PR bumps the
+      # version in package.json, rewrites CHANGELOG.md, tags the commit, and
+      # publishes a GitHub Release.
+      #
+      # Nothing is published to npm — this project is `private: true`.
+      - uses: googleapis/release-please-action@v4
+        with:
+          config-file: release-please-config.json
+          manifest-file: .release-please-manifest.json

@@ -88,6 +88,39 @@ test: cover the cn class merger
 Keep the subject line in the imperative mood and under ~72 characters. Add a body
 when the _why_ is not obvious from the diff.
 
+**Your prefix decides the next version number** — see [Releases](#releases)
+below. Please pick it deliberately rather than defaulting to `chore:`.
+
+## Releases
+
+Releases are automated with
+[release-please](https://github.com/googleapis/release-please). Nobody edits
+version numbers or the changelog by hand.
+
+When commits land on `master`, a bot opens (or updates) a pull request titled
+`chore(master): release x.y.z`. That PR contains the computed version bump and
+the generated changelog entries. Merging it tags the commit and publishes a
+GitHub Release. Nothing is published to npm — this is an application, not a
+package.
+
+How your commit prefix maps to the bump:
+
+| Prefix                                  | Effect                                 |
+| --------------------------------------- | -------------------------------------- |
+| `fix:`                                  | Patch — `0.1.0` → `0.1.1`              |
+| `feat:`                                 | Minor — `0.1.0` → `0.2.0`              |
+| `feat!:` or a `BREAKING CHANGE:` footer | Minor while below `1.0.0`, major after |
+| `perf:`, `refactor:`, `docs:`           | Appear in the changelog, no bump       |
+| `chore:`, `style:`, `test:`, `ci:`      | No changelog entry, no bump            |
+
+Two consequences worth knowing:
+
+- **`CHANGELOG.md` is generated.** Do not edit it — your changes are overwritten
+  on the next release. It is also in `.prettierignore`, so `pnpm format` leaves
+  it alone.
+- **A pull request of only `chore:`/`ci:` commits produces no release.** That is
+  intended: releases should correspond to user-visible change.
+
 ## Coding conventions
 
 - **TypeScript, strict mode.** Avoid `any`; prefer `unknown` plus narrowing.

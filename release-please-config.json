@@ -1,0 +1,29 @@
+{
+  "$schema": "https://raw.githubusercontent.com/googleapis/release-please/main/schemas/config.json",
+  "bootstrap-sha": "40b5a999e26fac119f1f007730a1a2b15378eb41",
+  "packages": {
+    ".": {
+      "release-type": "node",
+      "package-name": "blog",
+      "changelog-path": "CHANGELOG.md",
+      "include-component-in-tag": false,
+      "bump-minor-pre-major": true,
+      "bump-patch-for-minor-pre-major": false,
+      "draft": false,
+      "prerelease": false,
+      "changelog-sections": [
+        { "type": "feat", "section": "Features" },
+        { "type": "fix", "section": "Bug Fixes" },
+        { "type": "perf", "section": "Performance" },
+        { "type": "revert", "section": "Reverts" },
+        { "type": "refactor", "section": "Refactoring" },
+        { "type": "docs", "section": "Documentation" },
+        { "type": "build", "section": "Build System" },
+        { "type": "chore", "hidden": true },
+        { "type": "style", "hidden": true },
+        { "type": "test", "hidden": true },
+        { "type": "ci", "hidden": true }
+      ]
+    }
+  }
+}
