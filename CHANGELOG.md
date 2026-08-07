@@ -1,6 +1,7 @@
 # Changelog
 
-From 0.1.0 onward this file is generated automatically by
+Entries for 0.1.0 and earlier were written by hand. Every release after 0.1.0 is
+generated automatically by
 [release-please](https://github.com/googleapis/release-please) from
 [Conventional Commits](https://www.conventionalcommits.org/).
 
@@ -49,3 +50,38 @@ generation functionality yet.
 
 - Hardened `.gitignore` against accidentally committed keys, certificates,
   service-account files, and deployment caches.
+
+## 0.0.1 (2026-08-07)
+
+The initial project scaffold, before the repository was prepared for open
+source. Never tagged or released; recorded here so the history is complete.
+
+Covers two commits: `99eeba7` (initial commit, 24 files) and `2860b27`
+(shadcn/ui component library, 64 files).
+
+### Added
+
+- Next.js 16.2.6 App Router scaffold with React 19.2.4 and TypeScript in strict
+  mode.
+- Tailwind CSS v4 using the CSS-first `@theme inline` configuration in
+  `app/globals.css` — there is no `tailwind.config` file.
+- shadcn/ui configured with the `base-nova` style on Base UI primitives, plus
+  the `cn` class-name helper in `lib/utils.ts`.
+- Dark mode via `next-themes`, with a `d` keyboard shortcut that is suppressed
+  while the user is typing in an input, textarea, select, or contenteditable.
+- Geist and Geist Mono loaded through `next/font/google`.
+- Tooling: ESLint 9 flat config extending `eslint-config-next`, Prettier with
+  `prettier-plugin-tailwindcss`, PostCSS, and a pnpm workspace.
+- The full set of 61 shadcn/ui primitives (accordion through tooltip) and the
+  `useIsMobile` hook, with their supporting dependencies: `cmdk`, `date-fns`,
+  `embla-carousel-react`, `input-otp`, `react-day-picker`,
+  `react-resizable-panels`, and `recharts`.
+
+### Known issues
+
+Carried into 0.1.0 and resolved there:
+
+- No `LICENSE`, so the published code was legally all rights reserved.
+- `pnpm lint` exited non-zero on two `react-hooks/set-state-in-effect` errors.
+- `prettier --check` failed on 73 files.
+- No test runner and no tests.
