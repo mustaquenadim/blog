@@ -1,3 +1,8 @@
+/**
+ * Copyright (C) 2026 Mustaque Nadim
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
+
 import { Button } from "@/components/ui/button"
 
 export default function Page() {
