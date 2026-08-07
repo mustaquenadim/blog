@@ -1,0 +1,21 @@
+# Normalize line endings to LF in the repository and on checkout.
+# This matches `endOfLine: "lf"` in .prettierrc and prevents phantom
+# whole-file diffs between Windows and Unix contributors.
+* text=auto eol=lf
+
+# Generated — collapse in diffs and exclude from GitHub language stats.
+pnpm-lock.yaml linguist-generated=true -diff
+
+# Binary assets — never line-ending convert.
+*.ico binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.webp binary
+*.avif binary
+*.woff binary
+*.woff2 binary
+*.ttf binary
+*.otf binary
+*.pdf binary
